@@ -1,0 +1,39 @@
+using System;
+namespace practica_8
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите строку: ");
+            string inputString = Console.ReadLine();
+            if (SplitIntoWords(inputString, out string firstWord, out int wordCount))
+            {
+                Console.WriteLine($"Первое слово: '{firstWord}'");
+                Console.WriteLine($"Общее количество слов: {wordCount}");
+            }
+            else
+            {
+                Console.WriteLine("Ошибка: строка пуста или содержит только пробелы.");
+            }
+        }
+        static bool SplitIntoWords(string text, out string firstWord, out int wordCount)
+        {
+            firstWord = "";
+            wordCount = 0;
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                return false;
+            }
+            string[] words = text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (words.Length > 0)
+            {
+                firstWord = words[0];
+                wordCount = words.Length;
+                return true;
+            }
+            return false;
+        }
+    }
+}
