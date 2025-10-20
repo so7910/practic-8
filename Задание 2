@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace practica_8
+{
+    internal class Program
+    {
+        public static void Main(string[] args)
+        {
+            string inputString;
+            int minLength;
+
+            Console.Write("Введите строку: ");
+            inputString = Console.ReadLine();
+            if (string.IsNullOrEmpty(inputString))
+            {
+                Console.WriteLine("Строка пуста или null.");
+                return;
+            }
+
+            Console.Write("Введите минимальную длину: ");
+            if (!int.TryParse(Console.ReadLine(), out minLength) || minLength <= 0)
+            {
+                Console.WriteLine("Введите корректное положительное число для минимальной длины.");
+                return;
+            }
+            bool isLongEnough = String(inputString, minLength);
+            if (isLongEnough)
+            {
+                Console.WriteLine($"Строка '{inputString}' достаточно длинная.");
+            }
+            else
+            {
+                Console.WriteLine($"Строка '{inputString}' слишком короткая.");
+            }
+        }
+
+        public static bool String(string str, int minLength)
+        {
+            return str.Length >= minLength;
