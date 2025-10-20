@@ -1,0 +1,30 @@
+using System;
+namespace practica 8
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите длину прямоугольника: ");
+            string lengthInput = Console.ReadLine();
+            if (!double.TryParse(lengthInput, out double length) || length <= 0)
+            {
+                Console.WriteLine("Ошибка: введите корректное положительное число для длины.");
+                return;
+            }
+            Console.Write("Введите ширину прямоугольника: ");
+            string widthInput = Console.ReadLine();
+            if (!double.TryParse(widthInput, out double width) || width <= 0)
+            {
+                Console.WriteLine("Ошибка: введите корректное положительное число для ширины.");
+                return;
+            }
+            double perimeter = CalculatePerimeter(length, width);
+            Console.WriteLine($"Периметр прямоугольника: {perimeter:F2}");
+        }
+        static double CalculatePerimeter(double length, double width)
+        {
+            return 2 * (length + width);
+        }
+    }
+}
