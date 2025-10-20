@@ -1,0 +1,32 @@
+using System;
+namespace practica_8
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите число: ");
+            string numberInput = Console.ReadLine();
+            if (!int.TryParse(numberInput, out int number))
+            {
+                Console.WriteLine("Ошибка: введите корректное число.");
+                return;
+            }
+            Console.Write("Введите величину увеличения: ");
+            string incrementInput = Console.ReadLine();
+
+            if (!int.TryParse(incrementInput, out int increment) || increment < 0)
+            {
+                Console.WriteLine("Ошибка: величина увеличения должна быть неотрицательной.");
+                return;
+            }
+            Console.WriteLine($"До увеличения: {number}");
+            IncreaseNumber(ref number, increment);
+            Console.WriteLine($"После увеличения: {number}");
+        }
+        static void IncreaseNumber(ref int number, int increment)
+        {
+            number += increment;
+        }
+    }
+}           
